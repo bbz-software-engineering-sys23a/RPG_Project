@@ -1,7 +1,8 @@
-#ifndef EXTREMECOMBAT_STARTSCREEN_H // Include Guard Start
-#define EXTREMECOMBAT_STARTSCREEN_H // (Passe EXTREMECOMBAT an deinen Projektnamen an, falls nötig)
+//
+// Created by flori on 15.04.2025.
+//
 
-// Funktionsdeklaration
-void displayStartScreen();
+#ifndef STARTSCREEN_H
+#define STARTSCREEN_H
 
-#endif //EXTREMECOMBAT_STARTSCREEN_H // Include Guard Ende
+#endif //STARTSCREEN_H
