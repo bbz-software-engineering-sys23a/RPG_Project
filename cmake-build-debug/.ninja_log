@@ -1,15 +1,16 @@
 # ninja log v6
 511	678	7664053914860120	RPG_Project.exe	d558864c75dd73b2
-8	1624	7664229905969946	CMakeFiles/ExtremeCombat.dir/main.cpp.obj	3132865a7bd0177
-3	483	7664251701042656	build.ninja	eef187646621be2
-16	1408	7664229906049876	CMakeFiles/ExtremeCombat.dir/StartScreen.cpp.obj	321b52462449f468
-23	2103	7664229906126566	CMakeFiles/ExtremeCombat.dir/Datenstrukturen.cpp.obj	14fd0bf24e138595
-31	1884	7664229906199956	CMakeFiles/ExtremeCombat.dir/Charaktere.cpp.obj	6057f301f16524dc
-55	1521	7664114274418956	CMakeFiles/ExtremeCombat.dir/GameData.cpp.obj	7b3a8fb053ecbebe
+37	1581	7664272803013487	CMakeFiles/ExtremeCombat.dir/main.cpp.obj	3132865a7bd0177
+3	397	7664274702949422	build.ninja	eef187646621be2
+44	1417	7664272803210353	CMakeFiles/ExtremeCombat.dir/StartScreen.cpp.obj	321b52462449f468
+68	1457	7664272803449144	CMakeFiles/ExtremeCombat.dir/Charakterinformationen.cpp.obj	48e8aa746570e7ac
+50	1990	7664272803266848	CMakeFiles/ExtremeCombat.dir/Datenstrukturen.cpp.obj	14fd0bf24e138595
+58	1811	7664272803366622	CMakeFiles/ExtremeCombat.dir/Charaktere.cpp.obj	6057f301f16524dc
 64	1495	7664114274519019	CMakeFiles/ExtremeCombat.dir/Utils.cpp.obj	1fe033d810e13290
-2104	2305	7664229926924582	ExtremeCombat.exe	5b70e509e35c2adb
+55	1521	7664114274418956	CMakeFiles/ExtremeCombat.dir/GameData.cpp.obj	7b3a8fb053ecbebe
+1991	2166	7664272822697898	ExtremeCombat.exe	3aa89726b2995d98
 41	1585	7664229906309132	CMakeFiles/ExtremeCombat.dir/Kampf.cpp.obj	b4c50c9feb703b94
-6	957	7664251701042656	build.ninja	eef187646621be2
-99	907	7664251704775107	CMakeFiles/ExtremeCombat.dir/Charakterinformationen.cpp.obj	48e8aa746570e7ac
-87	979	7664251704664396	CMakeFiles/ExtremeCombat.dir/main.cpp.obj	3132865a7bd0177
-979	1434	7664251713585862	ExtremeCombat.exe	3aa89726b2995d98
+3	362	7664274702949422	build.ninja	eef187646621be2
+45	773	7664274704346840	CMakeFiles/ExtremeCombat.dir/Kampf.cpp.obj	b4c50c9feb703b94
+38	802	7664274704275371	CMakeFiles/ExtremeCombat.dir/main.cpp.obj	3132865a7bd0177
+802	996	7664274711908044	ExtremeCombat.exe	715aa3196084133a
