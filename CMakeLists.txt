@@ -1,0 +1,1 @@
+add_executable(RPG_Project datenstrukturen.cpp)
