@@ -9,7 +9,7 @@
 // Eigene Header einbinden
 #include "StartScreen.h"
 #include "Datenstrukturen.h" // Inkludiert Charaktere.h indirekt
-#include "Kampf.h"           // !!! NEU: Header für die Kampffunktion !!!
+#include "Charakterinformationen.h" // !!! NEU: Header für die Info-Anzeige !!!
 
 int main() {
     // Zufallsgenerator einmalig initialisieren
@@ -38,23 +38,26 @@ int main() {
     int menuChoice = 0;
     do {
         std::cout << "\n--- Hauptmenue ---" << std::endl;
-        std::cout << "1: Spiel Starten" << std::endl;
-        std::cout << "2: Beenden" << std::endl;
+        std::cout << "1: Spiel Starten (Charakterauswahl)" << std::endl;
+        std::cout << "2: Charakter Info Anzeigen" << std::endl; // Menüpunkt hinzugefügt
+        std::cout << "3: Beenden" << std::endl;                 // Beenden ist jetzt 3
 
         menuChoice = getIntegerInput("Deine Wahl: "); // Aus Datenstrukturen.h/.cpp
 
         switch (menuChoice) {
-            case 1: {
-                std::cout << "\nSpiel wird gestartet..." << std::endl;
+            case 1: { // Spiel starten / Charakterauswahl
+                std::cout << "\nCharakterauswahl wird gestartet..." << std::endl;
                 sleepMilliseconds(500);
                 try {
-                    // Charakterauswahl durchführen
                     std::pair<Player, Player> players = selectCharacters(available_characters); // Aus Datenstrukturen.h/.cpp
                     Player player1 = players.first;
                     Player player2 = players.second;
 
-                    // Kampf starten
-                    startCombat(player1, player2); // !!! Ruft jetzt Funktion aus Kampf.h/.cpp auf !!!
+                    std::cout << "\nCharaktere ausgewaehlt:" << std::endl;
+                    std::cout << "Spieler 1 (" << player1.name << "): " << player1.character_data.getName() << std::endl;
+                    std::cout << "Spieler 2 (" << player2.name << "): " << player2.character_data.getName() << std::endl;
+                    std::cout << "\nDer Kampf würde jetzt beginnen (ist aber noch nicht implementiert)." << std::endl;
+                    // startCombat(player1, player2); // Kampf ist entfernt
 
                 } catch (const std::exception& e) {
                     std::cerr << "\nEin Fehler ist aufgetreten: " << e.what() << std::endl;
@@ -65,15 +68,21 @@ int main() {
                  getchar(); // Einfaches Warten auf Enter
                 break;
             }
-            case 2:
+            case 2: { // !!! NEU: Charakter Info !!!
+                displayAllCharacterInfo(available_characters); // Ruft Funktion aus Charakterinformationen.h/.cpp auf
+                // Die Funktion wartet intern auf Enter.
+                break;
+            }
+            case 3: { // !!! Nummer geändert: Beenden !!!
                 std::cout << "Spiel wird beendet. Auf Wiedersehen!" << std::endl;
                 break;
+            }
             default:
-                std::cout << "Ungueltige Wahl. Bitte 1 oder 2 eingeben." << std::endl;
+                std::cout << "Ungueltige Wahl. Bitte 1, 2 oder 3 eingeben." << std::endl; // Angepasste Meldung
                 sleepMilliseconds(1000);
                 break;
         }
-    } while (menuChoice != 2);
+    } while (menuChoice != 3); // !!! Bedingung geändert !!!
 
 
     return 0; // Programm erfolgreich beenden

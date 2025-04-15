@@ -12,6 +12,5 @@ add_executable(ExtremeCombat
         StartScreen.cpp
         Datenstrukturen.cpp
         Charaktere.cpp
-        Kampf.cpp           # NEU hinzugefügt
+        Charakterinformationen.cpp # NEU hinzugefügt
 )
-
