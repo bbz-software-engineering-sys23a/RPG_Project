@@ -1,17 +1,4 @@
 "C:\Program Files\JetBrains\CLion 2024.3.1.1_1\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2024.3.1.1_1/bin/ninja/win/x64/ninja.exe" -G Ninja -S C:\Users\flori\CLionProjects\RPG_Project -B C:\Users\flori\CLionProjects\RPG_Project\cmake-build-debug
--- Configuring done (0.5s)
-CMake Error at CMakeLists.txt:10 (add_executable):
-  Cannot find source file:
-
-    GameData.cpp
-
-  Tried extensions .c .C .c++ .cc .cpp .cxx .cu .mpp .m .M .mm .ixx .cppm
-  .ccm .cxxm .c++m .h .hh .h++ .hm .hpp .hxx .in .txx .f .F .for .f77 .f90
-  .f95 .f03 .hip .ispc
-
-
-CMake Error at CMakeLists.txt:10 (add_executable):
-  No SOURCES given to target: ExtremeCombat
-
-
-CMake Generate step failed.  Build files cannot be regenerated correctly.
+-- Configuring done (0.3s)
+-- Generating done (0.1s)
+-- Build files have been written to: C:/Users/flori/CLionProjects/RPG_Project/cmake-build-debug

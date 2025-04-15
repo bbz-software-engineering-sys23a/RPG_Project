@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
-# Projektname (kannst du ändern, z.B. in ExtremeCombat)
-project(ExtremeCombat) # Name konsistent gemacht
+# Projektname
+project(ExtremeCombat)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
@@ -10,7 +10,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 add_executable(ExtremeCombat
         main.cpp
         StartScreen.cpp
-        GameData.cpp
-        Utils.cpp
+        Datenstrukturen.cpp
+        Charaktere.cpp
+        Charakterinformationen.cpp # NEU hinzugefügt
 )
-
