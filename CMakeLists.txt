@@ -8,5 +8,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 add_executable(ExtremeCombat
         main.cpp
         StartScreen.cpp
+        main.cpp
+        main.cpp
+        StartScreen.cpp
+        StartScreen.cpp
+        StartScreen.cpp
+        StartScreen.cpp
+        StartScreen.cpp
         # Füge hier später weitere .cpp Dateien hinzu
 )
+add_executable(new_target StartScreen.cpp)

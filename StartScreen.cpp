@@ -33,4 +33,14 @@ void displayStartScreen() {
     // Optional: Bildschirm löschen nach Enter (systemabhängig)
     // system("cls"); // Für Windows
     // system("clear"); // Für Linux/macOS
+    std::vector<Character> characterList = loadCharacters();
+
+    // Platzhalter-Objekte für Spieler
+    Character player1("", {}, {}, {});
+    Character player2("", {}, {}, {});
+
+    // Menü mit Charakterinfos und Auswahl starten
+    startCharacterSelection(characterList, player1, player2);
+
+    std::cout << "\nBeide Spieler haben gewählt. Der Kampf kann beginnen!\n";
 }
