@@ -1,8 +1,6 @@
-//
-// Created by flori on 15.04.2025.
-//
+#ifndef EXTREMECOMBAT_STARTSCREEN_H
+#define EXTREMECOMBAT_STARTSCREEN_H
 
-#ifndef STARTSCREEN_H
-#define STARTSCREEN_H
+void displayStartScreen();
 
-#endif //STARTSCREEN_H
+#endif //EXTREMECOMBAT_STARTSCREEN_H
