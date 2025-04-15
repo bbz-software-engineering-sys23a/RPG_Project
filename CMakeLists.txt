@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 cmake_minimum_required(VERSION 3.10) # Oder eine neuere Version
 project(ExtremeCombat) # Name deines Projekts
 
@@ -10,3 +11,6 @@ add_executable(ExtremeCombat
         StartScreen.cpp
         # Füge hier später weitere .cpp Dateien hinzu
 )
+=======
+add_executable(RPG_Project datenstrukturen.cpp)
+>>>>>>> feature/datenstrukturen
