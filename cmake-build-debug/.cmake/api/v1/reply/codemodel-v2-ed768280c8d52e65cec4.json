@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/flori/CLionProjects/RPG_Project/cmake-build-debug",
-		"source" : "C:/Users/flori/CLionProjects/RPG_Project"
+		"build" : "C:/Users/felix/CLionProjects/RPG_Project/cmake-build-debug",
+		"source" : "C:/Users/felix/CLionProjects/RPG_Project"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 7
+		"minor" : 6
 	}
 }

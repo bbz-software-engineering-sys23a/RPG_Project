@@ -1,7 +1,6 @@
 # ninja log v6
-27	569	7664030156923269	CMakeFiles/RPG_Project.dir/main.cpp.obj	77d578a07d0acd12
-2	346	7664039593308924	build.ninja	eef187646621be2
-573	682	7664030162395614	RPG_Project.exe	9fbaa51990c85ae2
+2	346	7664059342569331	build.ninja	eef187646621be2
 1	402	7664039620367208	CMakeFiles/ExtremeCombat.dir/main.cpp.obj	3132865a7bd0177
+573	682	7664030162395614	RPG_Project.exe	9fbaa51990c85ae2
 6	437	7664039620417161	CMakeFiles/ExtremeCombat.dir/StartScreen.cpp.obj	321b52462449f468
 438	551	7664039624726672	ExtremeCombat.exe	3fa2f6fd4b85fad3
