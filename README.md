@@ -1,2 +1,2 @@
 # RPG_Project
-RPG_Project von Florin, Gebriel, Felix
+RPG_Project von Florin, Gabriel, Felix
