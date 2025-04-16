@@ -9,7 +9,7 @@
 #include <cctype>
 #include <vector>
 #include <utility>
-// #include <windows.h> // Include wird hier nicht mehr benötigt, ggf. in main.cpp
+#include <windows.h> // Include wird hier nicht mehr benötigt, ggf. in main.cpp
 
 // --- Implementierung der Player Konstruktoren ---
 Player::Player() : name(""), character_data("Dummy", 0, 0, AttackData{"",0}, AttackData{"",0}, "") {}
@@ -18,7 +18,7 @@ Player::Player(std::string n, Character character) : name(std::move(n)), charact
 
 // --- Implementierung der Hilfsfunktionen (Utils) ---
 namespace {
-    std::mt19937 rng_ds;
+    std::mt19937 rng_ds; // Eigener Generator für diese Datei
     bool seed_initialized_ds = false;
 }
 
@@ -39,7 +39,7 @@ int rollD20() {
 }
 
 int getIntegerInput(const std::string& prompt) {
-    // SetConsoleOutputCP(CP_UTF8); // Entfernt - Besser einmalig in main.cpp (nur für Windows nötig)
+    SetConsoleOutputCP(CP_UTF8); // Entfernt - Besser einmalig in main.cpp (nur für Windows nötig)
     int value;
     while (true) {
         std::cout << prompt;
@@ -69,8 +69,8 @@ void sleepMilliseconds(int ms) {
 // --- Implementierung der Spiellogik-Funktionen (ohne Kampf) ---
 
 // Hilfsfunktion für die Charakterauswahl eines Spielers
+// Benötigt die Methoden von Character (aus Charaktere.h, via Datenstrukturen.h)
 Player selectSinglePlayer(int playerNumber, const std::vector<Character>& available_chars) {
-    // SetConsoleOutputCP(CP_UTF8); // Entfernt - Besser einmalig in main.cpp (nur für Windows nötig)
     std::cout << "\n--- Spieler " << playerNumber << ": Charakterauswahl ---" << std::endl;
     for (size_t i = 0; i < available_chars.size(); ++i) {
         std::cout << i + 1 << ": " << available_chars[i].getName() << " (HP:" << available_chars[i].getHP() << ")" << std::endl;

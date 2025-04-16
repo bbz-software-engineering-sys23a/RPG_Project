@@ -5,7 +5,7 @@
 #include <string>           // Für std::string und std::getline, std::stoi
 #include <chrono>           // Für sleepMilliseconds
 #include <thread>           // Für sleepMilliseconds
-#include <algorithm>        // Für std::max, std::swap, std::transform, std::min
+#include <algorithm>        // Für std::max, std::swap, std::transform
 #include <limits>           // Für getIntegerInput (obwohl hier nicht mehr direkt verwendet)
 #include <cctype>           // Für std::tolower
 #include <stdexcept>        // Für std::stoi Fehler
@@ -70,8 +70,8 @@ void startCombat(Player& player1, Player& player2) {
 
 
         // Angriff auswählen (mit Exit-Option und OWP-Prüfung)
-        std::cout << "\nWaehle deinen Angriff:" << std::endl;
-        currentPlayer->character_data.displayAttackOptions(); // Zeigt Optionen 1 und 2 mit Kosten an
+        std::cout << "\nWähle deinen Angriff:" << std::endl;
+        currentPlayer->character_data.displayAttackOptions(); // Zeigt Optionen 1 und 2 an
 
         int attackChoice = 0;
         std::string inputLine;
@@ -84,16 +84,22 @@ void startCombat(Player& player1, Player& player2) {
             std::cout << "Deine Wahl (1 oder 2, oder 'Exit' zum Beenden): ";
             if (!std::getline(std::cin, inputLine)) {
                 std::cerr << "Fehler bei der Eingabe. Breche ab." << std::endl;
-                exit(1);
+                exit(1); // Beende das Programm bei schwerem Eingabefehler
             }
+
+            // Kopie für Umwandlung in Kleinbuchstaben
             std::string lowerInput = inputLine;
+            // Wandle Eingabe in Kleinbuchstaben um für Vergleich
             std::transform(lowerInput.begin(), lowerInput.end(), lowerInput.begin(),
                            [](unsigned char c){ return std::tolower(c); });
 
+            // Prüfe auf "exit"
             if (lowerInput == "exit") {
                 std::cout << "\nSpiel wird auf Wunsch beendet..." << std::endl;
-                exit(0);
+                exit(0); // Beendet das gesamte Programm
             }
+
+            // Versuche, die Eingabe in eine Zahl umzuwandeln
             try {
                 size_t processedChars = 0;
                 int choiceNum = std::stoi(inputLine, &processedChars);
@@ -128,6 +134,7 @@ void startCombat(Player& player1, Player& player2) {
             }
         } // Ende der Angriffsauswahl-Schleife
 
+        // Angriff durchführen (Rest der Logik bleibt gleich)
         const AttackData& chosenAttack = (attackChoice == 1) ? currentPlayer->character_data.attack1 : currentPlayer->character_data.attack2;
 
         // OWP verbrauchen, WENN Angriff 2 gewählt wurde
