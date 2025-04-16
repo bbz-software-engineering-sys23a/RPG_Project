@@ -18,3 +18,11 @@
 3797	3994	7665059007097302	ExtremeCombat.exe	715aa3196084133a
 7	2360	7665060470368008	CMakeFiles/ExtremeCombat.dir/Charaktere.cpp.obj	6057f301f16524dc
 2360	2516	7665060493906889	ExtremeCombat.exe	715aa3196084133a
+7	1344	7665064871554489	CMakeFiles/ExtremeCombat.dir/Datenstrukturen.cpp.obj	14fd0bf24e138595
+1345	1536	7665064884936143	ExtremeCombat.exe	715aa3196084133a
+187	2956	7665079757336124	CMakeFiles/ExtremeCombat.dir/Kampf.cpp.obj	b4c50c9feb703b94
+171	3329	7665079757173980	CMakeFiles/ExtremeCombat.dir/Charaktere.cpp.obj	6057f301f16524dc
+157	4751	7665079757039716	CMakeFiles/ExtremeCombat.dir/Datenstrukturen.cpp.obj	14fd0bf24e138595
+202	6670	7665079757489704	CMakeFiles/ExtremeCombat.dir/Charakterinformationen.cpp.obj	48e8aa746570e7ac
+142	6842	7665079756886049	CMakeFiles/ExtremeCombat.dir/main.cpp.obj	3132865a7bd0177
+6842	7427	7665079823875937	ExtremeCombat.exe	715aa3196084133a

@@ -6,8 +6,9 @@
 // Deklaration der Funktion, die den Kampf startet und durchführt
 void startCombat(Player& player1, Player& player2);
 
-// !!! NEU: Deklaration für die Siegesanimation !!!
+// Deklaration für die Siegesanimation (Feuerwerk)
 void displayVictoryFireworks();
 
 #endif //EXTREMECOMBAT_KAMPF_H
+
 
