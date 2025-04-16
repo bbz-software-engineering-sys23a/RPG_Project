@@ -73,6 +73,12 @@ build CMakeFiles/ExtremeCombat.dir/Charaktere.cpp.obj: CXX_COMPILER__ExtremeComb
   OBJECT_DIR = CMakeFiles\ExtremeCombat.dir
   OBJECT_FILE_DIR = CMakeFiles\ExtremeCombat.dir
 
+build CMakeFiles/ExtremeCombat.dir/Kampf.cpp.obj: CXX_COMPILER__ExtremeCombat_unscanned_Debug C$:/Users/flori/CLionProjects/RPG_Project/Kampf.cpp || cmake_object_order_depends_target_ExtremeCombat
+  DEP_FILE = CMakeFiles\ExtremeCombat.dir\Kampf.cpp.obj.d
+  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\ExtremeCombat.dir
+  OBJECT_FILE_DIR = CMakeFiles\ExtremeCombat.dir
+
 build CMakeFiles/ExtremeCombat.dir/Charakterinformationen.cpp.obj: CXX_COMPILER__ExtremeCombat_unscanned_Debug C$:/Users/flori/CLionProjects/RPG_Project/Charakterinformationen.cpp || cmake_object_order_depends_target_ExtremeCombat
   DEP_FILE = CMakeFiles\ExtremeCombat.dir\Charakterinformationen.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
@@ -87,7 +93,7 @@ build CMakeFiles/ExtremeCombat.dir/Charakterinformationen.cpp.obj: CXX_COMPILER_
 #############################################
 # Link the executable ExtremeCombat.exe
 
-build ExtremeCombat.exe: CXX_EXECUTABLE_LINKER__ExtremeCombat_Debug CMakeFiles/ExtremeCombat.dir/main.cpp.obj CMakeFiles/ExtremeCombat.dir/StartScreen.cpp.obj CMakeFiles/ExtremeCombat.dir/Datenstrukturen.cpp.obj CMakeFiles/ExtremeCombat.dir/Charaktere.cpp.obj CMakeFiles/ExtremeCombat.dir/Charakterinformationen.cpp.obj
+build ExtremeCombat.exe: CXX_EXECUTABLE_LINKER__ExtremeCombat_Debug CMakeFiles/ExtremeCombat.dir/main.cpp.obj CMakeFiles/ExtremeCombat.dir/StartScreen.cpp.obj CMakeFiles/ExtremeCombat.dir/Datenstrukturen.cpp.obj CMakeFiles/ExtremeCombat.dir/Charaktere.cpp.obj CMakeFiles/ExtremeCombat.dir/Kampf.cpp.obj CMakeFiles/ExtremeCombat.dir/Charakterinformationen.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\ExtremeCombat.dir
