@@ -98,10 +98,28 @@ Player selectSinglePlayer(int playerNumber, const std::vector<Character>& availa
         }
     }
     std::string player_name;
-    std::cout << "Gib den Namen fuer Spieler " << playerNumber << " ein: ";
-    std::getline(std::cin, player_name);
-    if (player_name.empty()) player_name = "Spieler " + std::to_string(playerNumber);
-    return Player(player_name, selected_char_copy);
+    bool name_confirmed = false;
+    while (!name_confirmed) {
+        std::cin.clear(); // Fehlerstatus resetten
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Eingabepuffer leeren
+
+        std::cout << "Gib den Namen fuer Spieler " << playerNumber << " ein: ";
+        std::getline(std::cin, player_name);
+        if (player_name.empty()) player_name = "Spieler " + std::to_string(playerNumber);
+
+        char confirmation_input = ' ';
+        while (confirmation_input != 'j' && confirmation_input != 'n') {
+            std::cout << "Du hast '" << player_name << "' eingegeben. Bist du zufrieden? (j/n): ";
+            std::cin >> confirmation_input;
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            confirmation_input = std::tolower(confirmation_input);
+            if (confirmation_input != 'j' && confirmation_input != 'n') {
+                std::cout << "Bitte nur 'j' oder 'n' eingeben." << std::endl;
+            }
+        }
+        if (confirmation_input == 'j') name_confirmed = true;
+    }
+
 }
 
 // Implementierung Charakterauswahl
