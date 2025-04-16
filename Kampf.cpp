@@ -10,9 +10,12 @@
 #include <cctype>           // Für std::tolower
 #include <stdexcept>        // Für std::stoi Fehler
 #include <cstdlib>          // Für exit()
+#include <windows.h> // Für UTF-8 Darstellung
 
 // --- Implementierung Kampflogik ---
 void startCombat(Player& player1, Player& player2) {
+    // Setze die Codepage auf UTF-8
+    SetConsoleOutputCP(CP_UTF8);
     std::cout << "\n==================== KAMPFBEGINN ====================" << std::endl;
     player1.character_data.displayInfo();
     std::cout << "                    VS" << std::endl;
@@ -34,7 +37,7 @@ void startCombat(Player& player1, Player& player2) {
         sleepMilliseconds(1000);
 
         // --- Angriff auswählen (ANGEPASSTE LOGIK) ---
-        std::cout << "\nWaehle deinen Angriff:" << std::endl;
+        std::cout << "\nWähle deinen Angriff:" << std::endl;
         currentPlayer->character_data.displayAttackOptions(); // Zeigt Optionen 1 und 2 an
 
         int attackChoice = 0; // 0 bedeutet ungültig/noch nicht gewählt
@@ -71,17 +74,17 @@ void startCombat(Player& player1, Player& player2) {
                      if (choiceNum == 1 || choiceNum == 2) {
                         attackChoice = choiceNum; // Gültige Wahl (1 oder 2)
                     } else {
-                        std::cout << "Ungueltige Zahl. Bitte 1 oder 2 eingeben (oder 'Exit')." << std::endl;
+                        std::cout << "Ungültige Zahl. Bitte 1 oder 2 eingeben (oder 'Exit')." << std::endl;
                     }
                 } else {
-                     std::cout << "Ungueltige Eingabe. Bitte nur 1, 2 oder 'Exit' eingeben." << std::endl;
+                     std::cout << "Ungültige Eingabe. Bitte nur 1, 2 oder 'Exit' eingeben." << std::endl;
                 }
             } catch (const std::invalid_argument& e) {
                 // Fehler bei stoi: Eingabe war keine Zahl (und nicht "exit")
-                std::cout << "Ungueltige Eingabe. Bitte 1, 2 oder 'Exit' eingeben." << std::endl;
+                std::cout << "Ungültige Eingabe. Bitte 1, 2 oder 'Exit' eingeben." << std::endl;
             } catch (const std::out_of_range& e) {
                 // Fehler bei stoi: Zahl zu gross/klein für int
-                 std::cout << "Zahl ausserhalb des gueltigen Bereichs." << std::endl;
+                 std::cout << "Zahl ausserhalb des gültigen Bereichs." << std::endl;
             }
             // Wenn attackChoice immer noch 0 ist, wird die Schleife wiederholt
         }
@@ -94,9 +97,9 @@ void startCombat(Player& player1, Player& player2) {
 
         int attackRoll = rollD20();
         int defenseRoll = rollD20();
-        std::cout << currentPlayer->name << " wuerfelt eine " << attackRoll << " (Angriff)." << std::endl;
+        std::cout << currentPlayer->name << " würfelt eine " << attackRoll << " (Angriff)." << std::endl;
         sleepMilliseconds(600);
-        std::cout << opponentPlayer->name << " wuerfelt eine " << defenseRoll << " (Verteidigung)." << std::endl;
+        std::cout << opponentPlayer->name << " würfelt eine " << defenseRoll << " (Verteidigung)." << std::endl;
         sleepMilliseconds(1200);
 
         int potentialDamage = std::max(0, chosenAttack.base_damage + attackRoll - defenseRoll);
