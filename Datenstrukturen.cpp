@@ -53,7 +53,7 @@ int getIntegerInput(const std::string& prompt) {
             return value;
         } else {
             // Nur eine Fehlermeldung ausgeben
-            std::cout << "Ungueltige Eingabe. Bitte nur eine Zahl eingeben." << std::endl;
+            std::cout << "Ungültige Eingabe. Bitte nur eine Zahl eingeben." << std::endl;
             std::cin.clear(); // Fehlerflags zurücksetzen
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Input-Buffer leeren
         }
@@ -82,10 +82,10 @@ Player selectSinglePlayer(int playerNumber, const std::vector<Character>& availa
 
     // *** KORRIGIERTE Schleife für Charakterwahl + Bestätigung ***
     while (!char_confirmed) {
-        choice = getIntegerInput("Waehle einen Charakter (Nummer): ");
+        choice = getIntegerInput("Wähle einen Charakter (Nummer): ");
         if (choice >= 1 && choice <= static_cast<int>(available_chars.size())) {
             selected_char_copy = available_chars[choice - 1]; // Kopie erstellen
-            std::cout << "\nDu hast gewaehlt:" << std::endl;
+            std::cout << "\nDu hast gewählt:" << std::endl;
             selected_char_copy.displayInfo(); // Info anzeigen
 
             // Charakter-Bestätigung
@@ -102,13 +102,13 @@ Player selectSinglePlayer(int playerNumber, const std::vector<Character>& availa
             if (confirmation_input == 'j') {
                  char_confirmed = true; // Charakter bestätigt, Schleife verlassen
             } else {
-                 std::cout << "Waehle erneut." << std::endl;
+                 std::cout << "Wähle erneut." << std::endl;
                  // Schleife beginnt von vorn mit Charakterwahl
             }
         } else {
              // Fehlermeldung für ungültige Nummer
-             std::cout << "Ungueltige Auswahl. Bitte eine Nummer zwischen 1 und "
-                       << available_chars.size() << " waehlen." << std::endl;
+             std::cout << "Ungültige Auswahl. Bitte eine Nummer zwischen 1 und "
+                       << available_chars.size() << " wählen." << std::endl;
         }
     } // *** Ende der korrigierten Charakterwahl-Schleife ***
 
@@ -117,14 +117,14 @@ Player selectSinglePlayer(int playerNumber, const std::vector<Character>& availa
     std::string player_name;
     bool name_confirmed = false;
     while (!name_confirmed) {
-        std::cout << "Gib den Namen fuer Spieler " << playerNumber << " ein: ";
+        std::cout << "Gib den Namen für Spieler " << playerNumber << " ein: ";
         std::getline(std::cin, player_name);
         if (player_name.empty()) {
             player_name = "Spieler " + std::to_string(playerNumber);
             std::cout << "Kein Name eingegeben, Standardname '" << player_name << "' wird verwendet." << std::endl;
         }
 
-        std::cout << "Du hast den Namen '" << player_name << "' gewaehlt." << std::endl;
+        std::cout << "Du hast den Namen '" << player_name << "' gewählt." << std::endl;
         char name_confirmation_input = ' ';
         while (name_confirmation_input != 'j' && name_confirmation_input != 'n') {
             std::cout << "Ist der Name korrekt? (j/n): ";
@@ -152,7 +152,7 @@ Player selectSinglePlayer(int playerNumber, const std::vector<Character>& availa
 // Implementierung Charakterauswahl
 std::pair<Player, Player> selectCharacters(const std::vector<Character>& available_chars) {
     if (available_chars.empty()) {
-        throw std::runtime_error("Keine Charaktere zum Auswaehlen vorhanden!");
+        throw std::runtime_error("Keine Charaktere zum Auswählen vorhanden!");
     }
     Player player1 = selectSinglePlayer(1, available_chars);
     Player player2 = selectSinglePlayer(2, available_chars);
