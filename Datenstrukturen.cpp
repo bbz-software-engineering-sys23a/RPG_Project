@@ -9,6 +9,7 @@
 #include <cctype>
 #include <vector>   // Nötig für selectCharacters
 #include <utility>  // Nötig für selectCharacters
+#include <windows.h> // Für UTF-8 Darstellung
 
 // --- Implementierung der Player Konstruktoren ---
 // Benötigt die volle Definition von Character (aus Charaktere.h, via Datenstrukturen.h)
@@ -39,6 +40,8 @@ int rollD20() {
 }
 
 int getIntegerInput(const std::string& prompt) {
+    // Setze die Codepage auf UTF-8
+    SetConsoleOutputCP(CP_UTF8);
     int value;
     while (true) {
         std::cout << prompt;
@@ -50,7 +53,7 @@ int getIntegerInput(const std::string& prompt) {
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             return value;
         } else {
-            std::cout << "Ungueltige Eingabe. Bitte eine Zahl eingeben." << std::endl;
+            std::cout << "Ungültige Eingabe. Bitte eine Zahl eingeben." << std::endl;
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
@@ -68,6 +71,8 @@ void sleepMilliseconds(int ms) {
 // Hilfsfunktion für die Charakterauswahl eines Spielers
 // Benötigt die Methoden von Character (aus Charaktere.h, via Datenstrukturen.h)
 Player selectSinglePlayer(int playerNumber, const std::vector<Character>& available_chars) {
+    // Setze die Codepage auf UTF-8
+    SetConsoleOutputCP(CP_UTF8);
     std::cout << "\n--- Spieler " << playerNumber << ": Charakterauswahl ---" << std::endl;
     for (size_t i = 0; i < available_chars.size(); ++i) {
         std::cout << i + 1 << ": " << available_chars[i].getName() << " (HP:" << available_chars[i].getHP() << ")" << std::endl;
@@ -76,10 +81,10 @@ Player selectSinglePlayer(int playerNumber, const std::vector<Character>& availa
     Character selected_char_copy("Dummy", 0, 0, AttackData{"",0}, AttackData{"",0}, "");
     bool confirmed = false;
     while (!confirmed) {
-        choice = getIntegerInput("Waehle einen Charakter (Nummer): ");
+        choice = getIntegerInput("Wähle einen Charakter (Nummer): ");
         if (choice >= 1 && choice <= static_cast<int>(available_chars.size())) {
             selected_char_copy = available_chars[choice - 1];
-            std::cout << "\nDu hast gewaehlt:" << std::endl;
+            std::cout << "\nDu hast gewählt:" << std::endl;
             selected_char_copy.displayInfo(); // Ruft Methode aus Character auf
             char confirmation_input = ' ';
             while (confirmation_input != 'j' && confirmation_input != 'n') {
@@ -92,13 +97,13 @@ Player selectSinglePlayer(int playerNumber, const std::vector<Character>& availa
                  }
             }
             if (confirmation_input == 'j') confirmed = true;
-            else std::cout << "Waehle erneut." << std::endl;
+            else std::cout << "Wähle erneut." << std::endl;
         } else {
-            std::cout << "Ungueltige Auswahl." << std::endl;
+            std::cout << "Ungültige Auswahl." << std::endl;
         }
     }
     std::string player_name;
-    std::cout << "Gib den Namen fuer Spieler " << playerNumber << " ein: ";
+    std::cout << "Gib den Namen für Spieler " << playerNumber << " ein: ";
     std::getline(std::cin, player_name);
     if (player_name.empty()) player_name = "Spieler " + std::to_string(playerNumber);
     return Player(player_name, selected_char_copy);
@@ -107,7 +112,7 @@ Player selectSinglePlayer(int playerNumber, const std::vector<Character>& availa
 // Implementierung Charakterauswahl
 std::pair<Player, Player> selectCharacters(const std::vector<Character>& available_chars) {
     if (available_chars.empty()) {
-        throw std::runtime_error("Keine Charaktere zum Auswaehlen vorhanden!");
+        throw std::runtime_error("Keine Charaktere zum Auswählen vorhanden!");
     }
     Player player1 = selectSinglePlayer(1, available_chars);
     Player player2 = selectSinglePlayer(2, available_chars);
