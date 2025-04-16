@@ -93,12 +93,12 @@ std::vector<Character> initializeCharacters() {
     // Format: Name, HP, Basis-DEF, Angriff1(Name, Schaden), Angriff2(Name, Schaden), Verteidigungstext, [Optional: Max OWP]
     all_characters.emplace_back("Goblin", HP_LOW, DEF_LOW, AttackData{"Dolchstich von hinten", DMG1_LOW}, AttackData{"Brunnen Vergiften", DMG2_LOW}, "Stellt sich als Opfer dar", OWP_MAX_DEFAULT);
     all_characters.emplace_back("MG-Opa", HP_MID, DEF_MID, AttackData{"Schlag mit Gehstock", DMG1_LOW}, AttackData{"Ballert mit MG", DMG2_HIGH}, "Rückzug in Schützenbunker", OWP_MAX_DEFAULT);
-    all_characters.emplace_back("Schweinebärmann", HP_HIGH, DEF_MID, AttackData{"Al Gore sagt, es ist voll ernte", DMG1_MID}, AttackData{"Prankenhieb", DMG2_MID}, "Vortrag über Umweltschutz", OWP_MAX_DEFAULT);
+    all_characters.emplace_back("Alex Hörburger", HP_HIGH, DEF_MID, AttackData{"Farbe verwenden", DMG1_MID}, AttackData{"Vortrag über Leonhard Euler ", DMG2_MID}, "Ich will ihnen nur helfen", OWP_MAX_DEFAULT);
     all_characters.emplace_back("Redneck", HP_MID, DEF_LOW, AttackData{"Sie klauen unsere Jobs", DMG1_MID}, AttackData{"AR-15", DMG2_HIGH}, "Cousin/Bruder kommt", OWP_MAX_DEFAULT);
     all_characters.emplace_back("Maggus Rühl", HP_RUEHL, DEF_RUEHL, AttackData{"335kg Benchpress", DMG1_HIGH}, AttackData{"Protein Furz", DMG2_LOW}, "De Bob Tschigarillo hilft", OWP_MAX_DEFAULT + 20); // Mehr OWP?
     all_characters.emplace_back("Rainer Winkler", HP_LOW, DEF_LOW, AttackData{"Prügel raus Hauen", DMG1_MID}, AttackData{"Der Schwarze Luan kommt", DMG2_MID}, "Lügenlord", OWP_MAX_DEFAULT - 20); // Weniger OWP?
     all_characters.emplace_back("Chuck Norris", HP_NORRIS, DEF_NORRIS, AttackData{"Schmeisst Parties 500 Meter weit", DMG1_NORRIS}, AttackData{"Roundhouse Kick", DMG2_NORRIS}, "Hatt als Kind Katholische Priester missbracht", OWP_MAX_DEFAULT * 2); // Unendlich OWP? ;)
-    all_characters.emplace_back("Zinedine Zidane", HP_MID, DEF_MID, AttackData{"Faust in die Fresse", DMG1_MID}, AttackData{"Kopfstuss", DMG2_HIGH}, "Doping", OWP_MAX_DEFAULT);
+    all_characters.emplace_back("Armin", HP_MID, DEF_MID, AttackData{"Sie ich han e Frag", DMG1_MID}, AttackData{"Sie das macht aber kei sinn", DMG2_HIGH}, "Zwei Sandwich essen", OWP_MAX_DEFAULT);
     all_characters.emplace_back("Drachen Haider", HP_LOW, DEF_LOW, AttackData{"Hausbesuch", DMG1_MID}, AttackData{"Doxing", DMG2_MID}, "Anzeige ist raus", OWP_MAX_DEFAULT);
 
     return all_characters;
