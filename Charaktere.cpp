@@ -63,13 +63,14 @@ std::vector<Character> initializeCharacters() {
 
     all_characters.emplace_back("Goblin", HP_LOW, DEF_LOW, AttackData{"Dolchstich von hinten", DMG1_LOW}, AttackData{"Brunnen Vergiften", DMG2_LOW}, "Stellt sich als Opfer dar");
     all_characters.emplace_back("MG-Opa", HP_MID, DEF_MID, AttackData{"Schlag mit Gehstock", DMG1_LOW}, AttackData{"Ballert mit MG", DMG2_HIGH}, "Rückzug in Schützenbunker");
-    all_characters.emplace_back("Schweinebärmann", HP_HIGH, DEF_MID, AttackData{"Al Gore sagt, es ist voll ernte", DMG1_MID}, AttackData{"Prankenhieb", DMG2_MID}, "Vortrag über Umweltschutz");
+    all_characters.emplace_back("Hörburger", HP_HIGH, DEF_MID, AttackData{"Farbe verwenden", DMG1_MID}, AttackData{"Vortrag über Leonhard Euler", DMG2_MID}, "Ich helfe ihnen nur...");
     all_characters.emplace_back("Redneck", HP_MID, DEF_LOW, AttackData{"Sie klauen unsere Jobs", DMG1_MID}, AttackData{"AR-15", DMG2_HIGH}, "Cousin/Bruder kommt");
     all_characters.emplace_back("Maggus Rühl", HP_RUEHL, DEF_RUEHL, AttackData{"335kg Benchpress", DMG1_HIGH}, AttackData{"Protein Furz", DMG2_LOW}, "De Bob Tschigarillo hilft");
     all_characters.emplace_back("Rainer Winkler", HP_LOW, DEF_LOW, AttackData{"Prügel raus Hauen", DMG1_MID}, AttackData{"Der Schwarze Luan kommt", DMG2_MID}, "Lügenlord");
     all_characters.emplace_back("Chuck Norris", HP_NORRIS, DEF_NORRIS, AttackData{"Schmeisst Parties 500 Meter weit", DMG1_NORRIS}, AttackData{"Roundhouse Kick", DMG2_NORRIS}, "Hatt als Kind Katholische Priester missbracht");
     all_characters.emplace_back("Zinedine Zidane", HP_MID, DEF_MID, AttackData{"Faust in die Fresse", DMG1_MID}, AttackData{"Kopfstuss", DMG2_HIGH}, "Doping");
     all_characters.emplace_back("Drachen Haider", HP_LOW, DEF_LOW, AttackData{"Hausbesuch", DMG1_MID}, AttackData{"Doxing", DMG2_MID}, "Anzeige ist raus");
+    all_characters.emplace_back("Elender Zigischnorrer", HP_LOW, DEF_LOW, AttackData{"Hesch mer e Zigi", DMG1_MID}, AttackData{"Feuerzeug klauen", DMG2_MID}, "Brudi bin broke");
 
     return all_characters;
 }
