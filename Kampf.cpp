@@ -11,6 +11,7 @@
 #include <stdexcept>        // Für std::stoi Fehler
 #include <cstdlib>          // Für exit()
 #include <utility>          // Für std::swap
+#include <windows.h> // Für UTF-8 Darstellung
 
 // --- Implementierung Siegesanimation ---
 void displayVictoryFireworks() {
@@ -38,6 +39,8 @@ void displayVictoryFireworks() {
 
 // --- Implementierung Kampflogik ---
 void startCombat(Player& player1, Player& player2) {
+    // Setze die Codepage auf UTF-8
+    SetConsoleOutputCP(CP_UTF8);
     std::cout << "\n==================== KAMPFBEGINN ====================" << std::endl;
     player1.character_data.displayInfo();
     std::cout << "                    VS" << std::endl;
@@ -59,8 +62,11 @@ void startCombat(Player& player1, Player& player2) {
         sleepMilliseconds(1000);
 
         // --- Angriff auswählen (mit Exit-Option) ---
-        std::cout << "\nWaehle deinen Angriff:" << std::endl;
+        std::cout << "\nWähle deinen Angriff:" << std::endl;
         currentPlayer->character_data.displayAttackOptions();
+        // --- Angriff auswählen (ANGEPASSTE LOGIK) ---
+        std::cout << "\nWähle deinen Angriff:" << std::endl;
+        currentPlayer->character_data.displayAttackOptions(); // Zeigt Optionen 1 und 2 an
 
         int attackChoice = 0;
         std::string inputLine;
@@ -71,14 +77,20 @@ void startCombat(Player& player1, Player& player2) {
                 std::cerr << "Fehler bei der Eingabe. Breche ab." << std::endl;
                 exit(1);
             }
+
+            // Kopie für Umwandlung in Kleinbuchstaben
             std::string lowerInput = inputLine;
+            // Wandle Eingabe in Kleinbuchstaben um für Vergleich
             std::transform(lowerInput.begin(), lowerInput.end(), lowerInput.begin(),
                            [](unsigned char c){ return std::tolower(c); });
 
+            // Prüfe auf "exit"
             if (lowerInput == "exit") {
                 std::cout << "\nSpiel wird auf Wunsch beendet..." << std::endl;
                 exit(0);
             }
+
+            // Versuche, die Eingabe in eine Zahl umzuwandeln
             try {
                 size_t processedChars = 0;
                 int choiceNum = std::stoi(inputLine, &processedChars);
@@ -86,28 +98,34 @@ void startCombat(Player& player1, Player& player2) {
                      if (choiceNum == 1 || choiceNum == 2) {
                         attackChoice = choiceNum;
                     } else {
-                        std::cout << "Ungueltige Zahl. Bitte 1 oder 2 eingeben (oder 'Exit')." << std::endl;
+                        std::cout << "Ungültige Zahl. Bitte 1 oder 2 eingeben (oder 'Exit')." << std::endl;
                     }
                 } else {
-                     std::cout << "Ungueltige Eingabe. Bitte nur 1, 2 oder 'Exit' eingeben." << std::endl;
+                     std::cout << "Ungültige Eingabe. Bitte nur 1, 2 oder 'Exit' eingeben." << std::endl;
                 }
             } catch (const std::invalid_argument& e) {
-                std::cout << "Ungueltige Eingabe. Bitte 1, 2 oder 'Exit' eingeben." << std::endl;
+                std::cout << "Ungültige Eingabe. Bitte 1, 2 oder 'Exit' eingeben." << std::endl;
+                // Fehler bei stoi: Eingabe war keine Zahl (und nicht "exit")
+                std::cout << "Ungültige Eingabe. Bitte 1, 2 oder 'Exit' eingeben." << std::endl;
             } catch (const std::out_of_range& e) {
-                 std::cout << "Zahl ausserhalb des gueltigen Bereichs." << std::endl;
+                 std::cout << "Zahl ausserhalb des gültigen Bereichs." << std::endl;
+                // Fehler bei stoi: Zahl zu gross/klein für int
+                 std::cout << "Zahl ausserhalb des gültigen Bereichs." << std::endl;
             }
+            // Wenn attackChoice immer noch 0 ist, wird die Schleife wiederholt
         }
         // --- Ende Angriff auswählen ---
 
+        // Angriff durchführen (Rest der Logik bleibt gleich)
         const AttackData& chosenAttack = (attackChoice == 1) ? currentPlayer->character_data.attack1 : currentPlayer->character_data.attack2;
         std::cout << "\n" << currentPlayer->name << " setzt '" << chosenAttack.name << "' ein!" << std::endl;
         sleepMilliseconds(1200);
 
         int attackRoll = rollD20();
         int defenseRoll = rollD20();
-        std::cout << currentPlayer->name << " wuerfelt eine " << attackRoll << " (Angriff)." << std::endl;
+        std::cout << currentPlayer->name << " würfelt eine " << attackRoll << " (Angriff)." << std::endl;
         sleepMilliseconds(600);
-        std::cout << opponentPlayer->name << " wuerfelt eine " << defenseRoll << " (Verteidigung)." << std::endl;
+        std::cout << opponentPlayer->name << " würfelt eine " << defenseRoll << " (Verteidigung)." << std::endl;
         sleepMilliseconds(1200);
 
         int potentialDamage = std::max(0, chosenAttack.base_damage + attackRoll - defenseRoll);

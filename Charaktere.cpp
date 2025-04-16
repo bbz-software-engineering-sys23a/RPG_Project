@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>  // Für displayInfo etc.
 #include <algorithm> // Für std::max in takeDamage
+#include <windows.h> // Für UTF-8 Darstellung
 
 // --- Implementierung AttackData Konstruktor ---
 AttackData::AttackData(std::string n, int dmg) : name(std::move(n)), base_damage(dmg) {}
@@ -16,6 +17,8 @@ Character::Character(std::string n, int hp, int def,
       defense_action_text(std::move(def_text)), base_defense(def) {}
 
 void Character::displayInfo() const {
+    // Setze die Codepage auf UTF-8
+    SetConsoleOutputCP(CP_UTF8);
     std::cout << "Name: " << name << " (HP: " << current_hp << "/" << max_hp << ", DEF: " << base_defense << ")" << std::endl;
     std::cout << "  Angriff 1: " << attack1.name << " (Basis DMG: " << attack1.base_damage << ")" << std::endl;
     std::cout << "  Angriff 2: " << attack2.name << " (Basis DMG: " << attack2.base_damage << ")" << std::endl;
@@ -23,15 +26,19 @@ void Character::displayInfo() const {
 }
 
 void Character::displayAttackOptions() const {
+    // Setze die Codepage auf UTF-8
+    SetConsoleOutputCP(CP_UTF8);
      std::cout << "  1: " << attack1.name << " (Basis DMG: " << attack1.base_damage << ")" << std::endl;
      std::cout << "  2: " << attack2.name << " (Basis DMG: " << attack2.base_damage << ")" << std::endl;
 }
 
 void Character::takeDamage(int incoming_damage) {
+    // Setze die Codepage auf UTF-8
+    SetConsoleOutputCP(CP_UTF8);
     int actual_damage = std::max(0, incoming_damage - base_defense);
     current_hp = std::max(0, current_hp - actual_damage);
     if (actual_damage > 0) {
-        std::cout << name << " erleidet " << actual_damage << " tatsaechlichen Schaden!" << std::endl;
+        std::cout << name << " erleidet " << actual_damage << " tatsächlichen Schaden!" << std::endl;
     } else {
         std::cout << name << " blockt den Angriff komplett ab! (0 Schaden)" << std::endl;
     }
@@ -45,6 +52,8 @@ bool Character::isDefeated() const { return current_hp <= 0; }
 
 // --- Implementierung der Initialisierungsfunktion ---
 std::vector<Character> initializeCharacters() {
+    // Setze die Codepage auf UTF-8
+    SetConsoleOutputCP(CP_UTF8);
     std::vector<Character> all_characters;
     // Beispielwerte - passe HP, DEF, DMG nach Bedarf an!
     const int HP_LOW = 80, HP_MID = 100, HP_HIGH = 120, HP_NORRIS = 200, HP_RUEHL = 150;

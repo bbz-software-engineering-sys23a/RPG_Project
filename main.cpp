@@ -11,8 +11,11 @@
 #include "Datenstrukturen.h" // Inkludiert Charaktere.h indirekt
 #include "Kampf.h"           // Header für die Kampffunktion
 #include "Charakterinformationen.h" // Header für die Info-Anzeige
+#include <windows.h> // Für UTF-8 Darstellung
 
 int main() {
+    // Setze die Codepage auf UTF-8
+    SetConsoleOutputCP(CP_UTF8);
     // Zufallsgenerator einmalig initialisieren
     initializeRandomSeed(); // Aus Datenstrukturen.h/.cpp
 
@@ -38,7 +41,7 @@ int main() {
     // Hauptmenü
     int menuChoice = 0;
     do {
-        std::cout << "\n--- Hauptmenue ---" << std::endl;
+        std::cout << "\n--- Hauptmenü ---" << std::endl;
         std::cout << "1: Spiel Starten" << std::endl;
         std::cout << "2: Charakter Info Anzeigen" << std::endl; // Menüpunkt wieder da
         std::cout << "3: Beenden" << std::endl;                 // Beenden ist wieder 3
@@ -54,7 +57,7 @@ int main() {
                     Player player1 = players.first;
                     Player player2 = players.second;
 
-                    std::cout << "\nCharaktere ausgewaehlt:" << std::endl;
+                    std::cout << "\nCharaktere ausgewählt:" << std::endl;
                     std::cout << "Spieler 1 (" << player1.name << "): " << player1.character_data.getName() << std::endl;
                     std::cout << "Spieler 2 (" << player2.name << "): " << player2.character_data.getName() << std::endl;
 
@@ -63,10 +66,10 @@ int main() {
 
                 } catch (const std::exception& e) {
                     std::cerr << "\nEin Fehler ist aufgetreten: " << e.what() << std::endl;
-                    std::cout << "Kehre zum Hauptmenue zurueck." << std::endl;
+                    std::cout << "Kehre zum Hauptmenü zurück." << std::endl;
                     sleepMilliseconds(2000);
                 }
-                 std::cout << "\nDruecke Enter um zum Hauptmenue zurueckzukehren...";
+                 std::cout << "\nDrücke Enter um zum Hauptmenü zurückzukehren...";
                  getchar(); // Einfaches Warten auf Enter
                 break;
             }
@@ -80,7 +83,7 @@ int main() {
                 break;
             }
             default:
-                std::cout << "Ungueltige Wahl. Bitte 1, 2 oder 3 eingeben." << std::endl; // Angepasste Meldung
+                std::cout << "Ungültige Wahl. Bitte 1, 2 oder 3 eingeben." << std::endl; // Angepasste Meldung
                 sleepMilliseconds(1000);
                 break;
         }
