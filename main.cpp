@@ -8,7 +8,7 @@
 
 // Eigene Header einbinden
 #include "StartScreen.h"
-#include "Datenstrukturen.h" // Inkludiert Charaktere.h indirekt
+#include "Datenstrukturen.h" // Inkludiert Charaktere.h indirekt, enthält jetzt MainMenuOption Enum
 #include "Kampf.h"           // Header für die Kampffunktion
 #include "Charakterinformationen.h" // Header für die Info-Anzeige
 #include <windows.h> // Für UTF-8 Darstellung
@@ -39,30 +39,34 @@ int main() {
 
 
     // Hauptmenü
-    int menuChoice = 0;
+    MainMenuOption menuChoice = MainMenuOption::Invalid; // Verwende Enum
     do {
         std::cout << "\n--- Hauptmenü ---" << std::endl;
         std::cout << "1: Spiel Starten" << std::endl;
-        std::cout << "2: Charakter Info Anzeigen" << std::endl; // Menüpunkt wieder da
-        std::cout << "3: Beenden" << std::endl;                 // Beenden ist wieder 3
+        std::cout << "2: Charakter Info Anzeigen" << std::endl;
+        std::cout << "3: Beenden" << std::endl;
 
-        menuChoice = getIntegerInput("Deine Wahl: "); // Aus Datenstrukturen.h/.cpp
+        // Verwendet neue Funktion aus Datenstrukturen, die Enum zurückgibt
+        menuChoice = getMainMenuInput("Deine Wahl: ");
 
         switch (menuChoice) {
-            case 1: { // Spiel starten / Charakterauswahl + KAMPF
+            case MainMenuOption::Start: { // Spiel starten / Charakterauswahl + KAMPF
                 std::cout << "\nSpiel wird gestartet..." << std::endl;
                 sleepMilliseconds(500);
                 try {
-                    std::pair<Player, Player> players = selectCharacters(available_characters); // Aus Datenstrukturen.h/.cpp
-                    Player player1 = players.first;
+                    // selectCharacters gibt std::pair<Player, Player> zurück
+                    std::pair<Player, Player> players = selectCharacters(available_characters);
+                    Player player1 = players.first; // Kopie oder Move, je nach Compiler/Optimierung
                     Player player2 = players.second;
 
                     std::cout << "\nCharaktere ausgewählt:" << std::endl;
-                    std::cout << "Spieler 1 (" << player1.name << "): " << player1.character_data.getName() << std::endl;
-                    std::cout << "Spieler 2 (" << player2.name << "): " << player2.character_data.getName() << std::endl;
+                    // Verwende Getter für Namen und Charakterdaten
+                    std::cout << "Spieler 1 (" << player1.getName() << "): " << player1.getCharacterData().getName() << std::endl;
+                    std::cout << "Spieler 2 (" << player2.getName() << "): " << player2.getCharacterData().getName() << std::endl;
 
                     // --- KAMPF STARTEN ---
-                    startCombat(player1, player2); // Ruft Funktion aus Kampf.h/.cpp auf
+                    // Übergabe per Referenz, damit Änderungen im Kampf erhalten bleiben
+                    startCombat(player1, player2);
 
                 } catch (const std::exception& e) {
                     std::cerr << "\nEin Fehler ist aufgetreten: " << e.what() << std::endl;
@@ -70,24 +74,27 @@ int main() {
                     sleepMilliseconds(2000);
                 }
                  std::cout << "\nDrücke Enter um zum Hauptmenü zurückzukehren...";
-                 getchar(); // Einfaches Warten auf Enter
+                 // Sicherstellen, dass der Puffer leer ist, bevor auf Enter gewartet wird
+                 // (Nötig, da getchar() sonst evtl. ein übrig gebliebenes '\n' liest)
+                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                 // getchar(); // Alternative: Puffer leeren und dann getchar()
                 break;
             }
-            case 2: { // Charakter Info
-                displayAllCharacterInfo(available_characters); // Ruft Funktion aus Charakterinformationen.h/.cpp auf
-                // Die Funktion wartet intern auf Enter.
+            case MainMenuOption::Info: { // Charakter Info
+                displayAllCharacterInfo(available_characters); // Ruft Funktion auf
+                // Die Funktion displayAllCharacterInfo wartet intern auf Enter.
                 break;
             }
-            case 3: { // Beenden
+            case MainMenuOption::Exit: { // Beenden
                 std::cout << "Spiel wird beendet. Auf Wiedersehen!" << std::endl;
                 break;
             }
-            default:
-                std::cout << "Ungültige Wahl. Bitte 1, 2 oder 3 eingeben." << std::endl; // Angepasste Meldung
+            default: // Behandelt MainMenuOption::Invalid
+                std::cout << "Ungültige Wahl. Bitte 1, 2 oder 3 eingeben." << std::endl;
                 sleepMilliseconds(1000);
                 break;
         }
-    } while (menuChoice != 3); // Bedingung wieder auf 3
+    } while (menuChoice != MainMenuOption::Exit); // Bedingung verwendet Enum
 
 
     return 0; // Programm erfolgreich beenden
