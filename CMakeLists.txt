@@ -13,5 +13,7 @@ add_executable(ExtremeCombat
         Datenstrukturen.cpp
         Charaktere.cpp
         Kampf.cpp
-        Charakterinformationen.cpp # Hinzugefügt für Charakter-Info
+        Charakterinformationen.cpp
+        Dice.cpp # <-- NEU hinzugefügt
 )
+
