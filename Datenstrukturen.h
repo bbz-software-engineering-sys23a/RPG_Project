@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 #include <utility> // Für std::pair
-#include "Charaktere.h" // !!! Wichtig: Benötigt jetzt die Character-Definition !!!
+#include "Charaktere.h" // Benötigt die Character-Definition
 
 // --- Datenstrukturen ---
 
@@ -12,6 +12,7 @@
 struct Player {
     std::string name;
     Character character_data; // Verwendet die Klasse aus Charaktere.h
+    int defense_bonus = 0; // !!! NEU: Bonus für nächsten Verteidigungswurf !!!
 
     // Konstruktor Deklarationen
     Player();
@@ -22,7 +23,7 @@ struct Player {
 
 // Spiellogik
 std::pair<Player, Player> selectCharacters(const std::vector<Character>& available_chars);
-// void startCombat(Player& player1, Player& player2); // Kampf ist entfernt
+// void startCombat(Player& player1, Player& player2); // Wird in Kampf.h deklariert
 
 // Hilfsfunktionen (Utils)
 void initializeRandomSeed();
