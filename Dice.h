@@ -3,43 +3,43 @@
 
 #include <random> // Für Zufallszahlen benötigt
 
-// Abstrakte Basisklasse für Würfel
+// Abstrakte Basisklasse für alle Würfeltypen.
 class Dice {
 public:
-    // Pure virtual functions - jede abgeleitete Klasse MUSS diese implementieren
+    // Führt einen Würfelwurf durch (muss von Ableitung implementiert werden).
     virtual int roll() const = 0;
-    virtual int getMaxValue() const = 0; // <-- NEU: Maximalwert des Würfels
-
-    // Virtual destructor - wichtig für Basisklassen mit virtuellen Funktionen
+    // Gibt den Maximalwert des Würfels zurück (muss von Ableitung implementiert werden).
+    virtual int getMaxValue() const = 0;
+    // Virtueller Destruktor.
     virtual ~Dice() = default;
 
 protected:
-    // Statischer Random Number Generator für alle Würfeltypen
-    // Wird nur einmal initialisiert
+    // Statischer RNG für alle Würfel.
     static std::mt19937 rng;
     static bool rng_initialized;
-    static void initializeRNG(); // Statische Methode zur Initialisierung
+    static void initializeRNG(); // Methode zur Initialisierung.
 };
 
-// Abgeleitete Klasse für einen 10-seitigen Würfel
+// Repräsentiert einen 10-seitigen Würfel (D10).
 class D10Dice : public Dice {
 public:
     int roll() const override;
-    int getMaxValue() const override; // <-- NEU
+    int getMaxValue() const override;
 };
 
-// Abgeleitete Klasse für einen 20-seitigen Würfel
+// Repräsentiert einen 20-seitigen Würfel (D20).
 class D20Dice : public Dice {
 public:
     int roll() const override;
-    int getMaxValue() const override; // <-- NEU
+    int getMaxValue() const override;
 };
 
-// Abgeleitete Klasse für einen 40-seitigen Würfel
+// Repräsentiert einen 40-seitigen Würfel (D40).
 class D40Dice : public Dice {
 public:
     int roll() const override;
-    int getMaxValue() const override; // <-- NEU
+    int getMaxValue() const override;
 };
 
 #endif // EXTREMECOMBAT_DICE_H
+// EXTREMECOMBAT_DICE_H

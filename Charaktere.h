@@ -3,21 +3,20 @@
 
 #include <string>
 #include <vector>
-#include <iostream> // Nur für Deklarationen benötigt, wenn Methoden inline wären
+#include <iostream>
 
-// Struktur für Angriffsdaten (Name + Schaden)
-// Bleibt eine einfache Struktur, da sie primär als Datencontainer dient.
+// Struktur für Angriffsdaten (Name + Schaden).
 struct AttackData {
     std::string name;
-    int base_damage; // Basis-Schaden des Angriffs
+    int base_damage;
 
-    // Konstruktor
+    // Konstruktor für AttackData.
     AttackData(std::string n, int dmg);
 };
 
-// Charakter-Klasse (jetzt mit private Membern)
+// Repräsentiert einen Spielcharakter.
 class Character {
-private: // Datenmember sind jetzt private
+private:
     std::string name;
     int max_hp;
     int current_hp;
@@ -26,39 +25,43 @@ private: // Datenmember sind jetzt private
     std::string defense_action_text;
     int base_defense;
     int max_owp;
-    int current_owp; // "Ominöses weisses Pulver"
+    int current_owp;
 
-public: // Öffentliche Schnittstelle (Konstruktor, Methoden, Getter)
-    // Konstruktor Deklaration (angepasst für OWP)
+public:
+    // Konstruktor für Character.
     Character(std::string n, int hp, int def,
               const AttackData& a1, const AttackData& a2,
-              std::string def_text, int max_owp_val = 100); // Standardwert für max OWP
+              std::string def_text, int max_owp_val = 100);
 
-    // Methoden Deklarationen
+    // Zeigt Charakter-Infos an.
     void displayInfo() const;
+    // Zeigt Angriffsoptionen an.
     void displayAttackOptions() const;
+    // Verarbeitet eingehenden Schaden.
     void takeDamage(int incoming_damage);
+    // Prüft, ob der Charakter besiegt ist.
     bool isDefeated() const;
 
-    // OWP Methoden Deklarationen
-    void addOwp(int amount);             // Fügt OWP hinzu (bis max_owp)
-    bool canAfford(int cost) const;      // Prüft, ob genug OWP vorhanden ist
-    bool useOwp(int cost);               // Verbraucht OWP, gibt true zurück bei Erfolg
+    // Fügt OWP hinzu.
+    void addOwp(int amount);
+    // Prüft, ob OWP für Kosten ausreichen.
+    bool canAfford(int cost) const;
+    // Verbraucht OWP (falls möglich).
+    bool useOwp(int cost);
 
-    // --- Getter-Methoden ---
+    // Getter-Methoden.
     std::string getName() const;
     int getHP() const;
-    int getMaxHP() const; // Neuer Getter
+    int getMaxHP() const;
     int getDefenseStat() const;
     int getOwp() const;
-    int getMaxOwp() const; // Neuer Getter
-    const AttackData& getAttack1() const; // Getter für Angriffe
-    const AttackData& getAttack2() const; // Getter für Angriffe
-    std::string getDefenseActionText() const; // Neuer Getter
-
+    int getMaxOwp() const;
+    const AttackData& getAttack1() const;
+    const AttackData& getAttack2() const;
+    std::string getDefenseActionText() const;
 };
 
-// Funktionsdeklaration für die Initialisierung
+// Initialisiert die Liste der verfügbaren Charaktere.
 std::vector<Character> initializeCharacters();
 
 #endif //EXTREMECOMBAT_CHARAKTERE_H

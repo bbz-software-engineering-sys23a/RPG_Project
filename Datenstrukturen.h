@@ -3,23 +3,19 @@
 
 #include <string>
 #include <vector>
-#include <utility> // Für std::pair
-#include "Charaktere.h" // Benötigt die Character-Definition
+#include <utility>
+#include "Charaktere.h"
 
-// --- Enum für Hauptmenü ---
-// Hinzugefügt: Option für Würfelauswahl
+// Definiert die Optionen im Hauptmenü.
 enum class MainMenuOption {
     Start = 1,
     Info = 2,
-    SelectDice = 3, // Neue Option
-    Exit = 4,       // Exit ist jetzt 4
-    Invalid         // Für ungültige Eingaben oder Fehler
+    SelectDice = 3,
+    Exit = 4,
+    Invalid
 };
 
-
-// --- Datenstrukturen ---
-
-// Klasse für einen Spieler (unverändert)
+// Repräsentiert einen Spieler.
 class Player {
 private:
     std::string name;
@@ -27,27 +23,31 @@ private:
     int defense_bonus = 0;
 
 public:
+    // Konstruktoren.
     Player();
     Player(std::string n, Character character);
+
+    // Getter.
     std::string getName() const;
     const Character& getCharacterData() const;
     Character& getCharacterData();
     int getDefenseBonus() const;
+
+    // Setter/Modifier.
     void setDefenseBonus(int bonus);
     void resetDefenseBonus();
 };
 
 // --- Funktionsdeklarationen ---
 
-// Spiellogik
+// Startet die Charakterauswahl für beide Spieler.
 std::pair<Player, Player> selectCharacters(const std::vector<Character>& available_chars);
 
-// Hilfsfunktionen (Utils)
-// void initializeRandomSeed(); // Entfernt
-// int rollD20(); // Entfernt
+// Liest die Hauptmenü-Auswahl ein.
 MainMenuOption getMainMenuInput(const std::string& prompt);
+// Liest eine einfache Ganzzahl ein.
 int getIntegerInputSimple(const std::string& prompt);
+// Pausiert das Programm.
 void sleepMilliseconds(int ms);
-
 
 #endif //EXTREMECOMBAT_DATENSTRUKTUREN_H

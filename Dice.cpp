@@ -1,11 +1,12 @@
 #include "Dice.h"
-#include <chrono> // Für Seed-Generierung
-#include <stdexcept> // Für Fehler
+#include <chrono>
+#include <stdexcept>
 
-// Initialisierung der statischen Member der Basisklasse Dice
+// Initialisierung der statischen Member.
 std::mt19937 Dice::rng;
 bool Dice::rng_initialized = false;
 
+// Initialisiert den statischen RNG einmalig.
 void Dice::initializeRNG() {
     if (!rng_initialized) {
         unsigned seed = std::chrono::high_resolution_clock::now().time_since_epoch().count();
@@ -14,45 +15,44 @@ void Dice::initializeRNG() {
     }
 }
 
-// Implementierung für D10Dice::roll()
+// Würfelt eine Zahl von 1-10.
 int D10Dice::roll() const {
     if (!rng_initialized) {
-        initializeRNG(); // Sicherstellen, dass RNG initialisiert ist
+        initializeRNG();
     }
     std::uniform_int_distribution<int> dist(1, 10);
     return dist(rng);
 }
 
-// NEU: Implementierung für D10Dice::getMaxValue()
+// Gibt den Maximalwert 10 zurück.
 int D10Dice::getMaxValue() const {
     return 10;
 }
 
-// Implementierung für D20Dice::roll()
+// Würfelt eine Zahl von 1-20.
 int D20Dice::roll() const {
     if (!rng_initialized) {
-        initializeRNG(); // Sicherstellen, dass RNG initialisiert ist
+        initializeRNG();
     }
     std::uniform_int_distribution<int> dist(1, 20);
     return dist(rng);
 }
 
-// NEU: Implementierung für D20Dice::getMaxValue()
+// Gibt den Maximalwert 20 zurück.
 int D20Dice::getMaxValue() const {
     return 20;
 }
 
-
-// Implementierung für D40Dice::roll()
+// Würfelt eine Zahl von 1-40.
 int D40Dice::roll() const {
     if (!rng_initialized) {
-        initializeRNG(); // Sicherstellen, dass RNG initialisiert ist
+        initializeRNG();
     }
     std::uniform_int_distribution<int> dist(1, 40);
     return dist(rng);
 }
 
-// NEU: Implementierung für D40Dice::getMaxValue()
+// Gibt den Maximalwert 40 zurück.
 int D40Dice::getMaxValue() const {
     return 40;
 }
