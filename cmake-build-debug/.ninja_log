@@ -1,13 +1,10 @@
 # ninja log v6
 20	7333	7665945251451235	CMakeFiles/ExtremeCombat.dir/main.cpp.obj	3132865a7bd0177
-99	1168	7665945388070884	build.ninja	eef187646621be2
+99	1168	7665959576484570	build.ninja	eef187646621be2
 37	6569	7665945251610782	CMakeFiles/ExtremeCombat.dir/StartScreen.cpp.obj	321b52462449f468
 134	3084	7665945252586413	CMakeFiles/ExtremeCombat.dir/Dice.cpp.obj	87246a2ecb383cd6
-65	4161	7665875629589817	CMakeFiles/ExtremeCombat.dir/Charakterinformationen.cpp.obj	48e8aa746570e7ac
-41	1667	7665924213112938	CMakeFiles/ExtremeCombat.dir/Datenstrukturen.cpp.obj	14fd0bf24e138595
-69	3470	7665945251940325	CMakeFiles/ExtremeCombat.dir/Charaktere.cpp.obj	6057f301f16524dc
-3497	4099	7665924247665985	ExtremeCombat.exe	2e10be4e01676dd3
-86	3772	7665945252100174	CMakeFiles/ExtremeCombat.dir/Kampf.cpp.obj	b4c50c9feb703b94
-5	850	7665947513324888	CMakeFiles/ExtremeCombat.dir/Datenstrukturen.cpp.obj	14fd0bf24e138595
 11	1760	7665947513374785	CMakeFiles/ExtremeCombat.dir/Charakterinformationen.cpp.obj	48e8aa746570e7ac
+5	850	7665947513324888	CMakeFiles/ExtremeCombat.dir/Datenstrukturen.cpp.obj	14fd0bf24e138595
+69	3470	7665945251940325	CMakeFiles/ExtremeCombat.dir/Charaktere.cpp.obj	6057f301f16524dc
 1760	1933	7665947530871011	ExtremeCombat.exe	2e10be4e01676dd3
+86	3772	7665945252100174	CMakeFiles/ExtremeCombat.dir/Kampf.cpp.obj	b4c50c9feb703b94
